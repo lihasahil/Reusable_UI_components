@@ -1,9 +1,7 @@
-// components/ui/Button.tsx
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import clsx from "clsx";
+import { cn } from "../lib/utilitis";
 
-// 1. Define the button class variants
 const buttonClasses = cva(
   "transition duration-200 cursor-pointer font-medium",
   {
@@ -34,27 +32,24 @@ const buttonClasses = cva(
   }
 );
 
-// 2. Type-safe props using VariantProps
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonClasses> {
   children: React.ReactNode;
 }
 
-// 3. Component using `buttonClasses` from cva
-export const Button: React.FC<ButtonProps> = ({
-  variant,
-  size,
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <button
-      className={clsx(buttonClasses({ variant, size }), className)}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant, size, children, className, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(buttonClasses({ variant, size }), className)}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);
+
+Button.displayName = "Button";
