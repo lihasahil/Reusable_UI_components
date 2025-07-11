@@ -31,7 +31,7 @@ const MyForm = () => {
   const [form, setForm] = useState<FormState>(initialState);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,50}$/;
   const validateField = (field: keyof FormState, value: string): FieldState => {
     if (!value.trim()) {
       return {
@@ -40,7 +40,9 @@ const MyForm = () => {
         helperText: `${capitalize(field)} is required.`,
       };
     }
-
+    if (field === "name" && !nameRegex.test(value)) {
+      return { value, status: "error", helperText: "Invalid Name." };
+    }
     if (field === "email" && !emailRegex.test(value)) {
       return { value, status: "error", helperText: "Invalid email format." };
     }
@@ -125,7 +127,7 @@ const MyForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
+    <form onSubmit={handleSubmit} className=" mx-auto space-y-4">
       <Input
         label="Name"
         type="text"
