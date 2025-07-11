@@ -1,5 +1,6 @@
 import "./App.css";
 import { Button } from "./components/Button";
+import MyForm from "./pages/Form";
 
 function App() {
   return (
@@ -108,6 +109,7 @@ function App() {
           </Button>
         </div>
       </div>
+      <MyForm />
     </div>
   );
 }
