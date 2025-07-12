@@ -14,11 +14,11 @@ Each component is fully typed and leverages `cva` for variant-based styling.
 
 ## Features
 
--  Ref forwarding via `React.forwardRef`
--  Class merging using `clsx` and `tailwind-merge`
--  Variant-based styling with `cva`
--  Built with accessibility in mind
--  Fully typed with TypeScript
+- Ref forwarding via `React.forwardRef`
+- Class merging using `clsx` and `tailwind-merge`
+- Variant-based styling with `cva`
+- Built with accessibility in mind
+- Fully typed with TypeScript
 
 ---
 
@@ -31,3 +31,5 @@ npm install
 # or
 yarn install
 ```
+
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
